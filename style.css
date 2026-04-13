@@ -8,17 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     text-align: center;
-    cursor: none;
-    .tennis-ball {
-     width: 25px;
-     height: 25px;
-     background-color: #A0EA11;
-     border-radius: 50%;
-     position: fixed;
-    pointer-events: none;
-     z-index: 9999;
-     transform: translate(-50%, -50%);
-     background: radial-gradient(circle at 50% 50%, transparent 60%, #fff 61%, #fff 65%, transparent 66%), #A0EA11;
+    cursor: url('tennis-ball.png'), auto;
 }
 
 .container {

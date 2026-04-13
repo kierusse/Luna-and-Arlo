@@ -8,6 +8,16 @@ body {
     height: 100vh;
     margin: 0;
     text-align: center;
+    cursor: none;
+    .tennis-ball {
+     width: 25px;
+     height: 25px;
+     background-color: #A0EA11;
+     border-radius: 50%;
+     position: fixed;
+    pointer-events: none;
+     z-index: 9999;
+     transform: translate(-50%, -50%);
 }
 
 .container {

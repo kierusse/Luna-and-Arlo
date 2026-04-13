@@ -18,6 +18,7 @@ body {
     pointer-events: none;
      z-index: 9999;
      transform: translate(-50%, -50%);
+     background: radial-gradient(circle at 50% 50%, transparent 60%, #fff 61%, #fff 65%, transparent 66%), #A0EA11;
 }
 
 .container {

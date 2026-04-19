@@ -8,7 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     text-align: center;
-    cursor: url('tennis-ball-adobe.png'), auto;
+    cursor: url('tennis-adobe.png'), auto;
 }
 
 h1 { font-size: 2.5rem; margin-bottom: 1rem; }

@@ -31,3 +31,24 @@ For each, one sentence explaining the choice is sufficient. This demonstrates in
 
 4. How to Visit Your Project 
 Provide the live URL for your deployed project. This is an obvious one: your README.md needs to offer a working link (or links) to what you are building. This should be a direct link that anyone can click/tap to visit your project.
+
+
+
+# Project Title
+
+One paragraph describing what the project is and does.
+
+Possibly, another brief paragraph that offers a bit more information you want to include.
+
+## Purpose
+
+Why this project exists and who it's for.
+
+## Tools and Technologies
+
+- **Tool 01 name** - Why I chose it
+- **Tool 02 name** - Why I chose it
+
+## Live Project
+
+[View the project](https://your-deployed-url.some-hosting-provider-website.com)

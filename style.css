@@ -8,8 +8,8 @@ body {
     height: 100vh;
     margin: 0;
     text-align: center;
-    cursor: url('tennis-ball-shadow.png'), auto;
-    background-image: url("tennis-background.avif");
+    cursor: url('tennis-cursor.cur'), auto;
+    background-image: url("grass-field-adobe.jpg");
 }
 
 h1 { font-size: 2.5rem; margin-bottom: 1rem; }

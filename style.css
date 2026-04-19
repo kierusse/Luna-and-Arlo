@@ -8,7 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     text-align: center;
-    cursor: url('tennis-adobe.png'), auto;
+    cursor: url('tennis-ball-shadow.png'), auto;
     background-image: url("tennis-background.png");
 }
 

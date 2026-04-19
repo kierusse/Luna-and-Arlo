@@ -9,7 +9,7 @@ body {
     margin: 0;
     text-align: center;
     cursor: url('tennis-ball-shadow.png'), auto;
-    background-image: url("tennis-background.png");
+    background-image: url("tennis-background.avif");
 }
 
 h1 { font-size: 2.5rem; margin-bottom: 1rem; }

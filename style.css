@@ -7,12 +7,16 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 0;
     text-align: center;
     cursor: url('tennis-cursor.cur'), auto;
     background-image: url("grass-field-adobe.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    }
 
 h1 { font-size: 2.5rem; margin-bottom: 1rem; }
 

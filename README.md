@@ -53,20 +53,24 @@ it offered to upload my existing VSCode projects. This is a feature I will use d
 the line to streamline code writing. This allows me to reinforce my skills after a
 break in practice. My approach for the prototype uses artificial intelligence, and
 keeping to my roots provides a sense of balance in my project creation.
+
 **Design Tool**: Figma- I chose Figma as my design tool because I have successfully
 carried out prototypes with it. The basics of Figma will allow me to build the
 visual aspects of my project using existing shapes and implementing simple math to
 execute ideas.
+
 **Approach**: Figma Make, backed by Claude- Figma make was chosen to create my
 high-fidelity prototype. This project will be my first time using AI to carry out a
 visual idea versus simple text and schedules or itineraries. I am using Figma Make
 instead of its alternative, Loveable, because I am already familiar with the
 platform and my work will be based out of the same host site.
+
 **Browser**: Google Chrome- I will be using Google Chrome to access my online
 repository and design tools because it has successfully carried out all of my
 projects thus far, and I do not see a benefit to straying from it at this time.
 Firefox could be a solid alternative, but for time's sake I am already logged in to
 all of my accounts and they are linked with Google.
+
 **Hosting and Deployment**: GitHub \& GitHub Pages- I am sticking to GitHub for an
 online repository and site hosting because it houses my other projects from start
 to finish, and with continuity in mind, switching to an alternative such as GitLab
@@ -76,6 +80,7 @@ with the idea of keeping my foundation consistent. I am familiar with the featur
 and can focus on branching out elsewhere in my project. SourceTree and Tower would
 be alternatives that are also supported on Windows, which I currently use, though I
 do not plan on experimenting in this area. I have VSCode to support changes.
+
 **Animations**: Three.js - According to Stack Overflow, "Three.js allows the
 creation of GPU-accelerated 3D animations using the JavaScript language as part of
 a website without relying on proprietary browser plugins." I look forward to
@@ -95,7 +100,7 @@ create with time, interest, and the right tool.
 
 ## Live Project
 
-[View my project] (https://kierusse.github.io/Luna-and-Arlo/)
+View my project: (https://kierusse.github.io/Luna-and-Arlo/)
 
 
 

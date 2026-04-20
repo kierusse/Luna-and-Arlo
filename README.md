@@ -6,7 +6,7 @@ opens the door to game design.
 
 ## Purpose
 
-**Why does it matter?** Mindless rejuvenation. Microsoft Edge Surf and Chrome Dino
+Mindless rejuvenation. Microsoft Edge Surf and Chrome Dino
 have gained reputations as competitive games and distractions in the workplace.
 This project is designed to give the mind a calm break from the mundane and routine
 while using psychology-backed focus methods.

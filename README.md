@@ -1,80 +1,29 @@
-# Luna-and-Arlo
+# Luna & Arlo
+
 'Luna &amp; Arlo', named after my dogs, is an interactive art toy where two physics-based Australian Cattle Dogs chase the user's cursor which is disguised as a tennis ball.
-
-1. What Is This?
-Write one paragraph describing your project.
-
-What does it do?
-What type of project is it?
-Someone reading this section should understand what they're looking at in 30 seconds.
-
-Keep it direct. No marketing pitches or towering essays with hundreds of emojis. A description. "This is a portfolio site showcasing my graphic design projects, art installations, and creative technology work, built for potential employers and clients who want to see my work." is clear and sufficient.
-
-2. Why Does It Exist?
-Explain the purpose and audience.
-
-Why did you build this?
-Who is it for?
-What need does it serve?
-This section connects your project to a real-world purpose beyond "it's a class assignment."
-
-If your project solves a specific problem ("Citizens in my town don't have an easy way to find information about the town policies, election information, candidates, and other critical municipal authority communications."), say that. If it serves a personal goal ("I need an online presence to apply for careers involving the web and creative technology"), say that. Be direct and honest about the motivation.
-
-3. What Tools Did I Use?
-List the tools and technologies you used and briefly explain why you chose them.
-
-Include your code editor(s)
-Include any frameworks or libraries
-Include your hosting platform(s)
-Include any AI assistants/agents you used
-For each, one sentence explaining the choice is sufficient. This demonstrates intentionality. You (hopefully) didn't just grab whatever was closest/easiest. You thought deeply. You made deliberate choices.
-
-4. How to Visit Your Project 
-Provide the live URL for your deployed project. This is an obvious one: your README.md needs to offer a working link (or links) to what you are building. This should be a direct link that anyone can click/tap to visit your project.
-
-
-
-# Project Title
-
-One paragraph describing what the project is and does.
-
-Possibly, another brief paragraph that offers a bit more information you want to include.
+'Luna \& Arlo' pushes the boundaries of my coding knowledge and
+opens the door to game design.
 
 ## Purpose
 
-Why this project exists and who it's for.
-
-## Tools and Technologies
-
-- **Tool 01 name** - Why I chose it
-- **Tool 02 name** - Why I chose it
-
-## Live Project
-
-[View the project](https://your-deployed-url.some-hosting-provider-website.com)
-
-
-
-### Project Description
-**What is it?** 'Luna \& Arlo', named after my dogs, is an interactive art toy
-where two physics-based Australian Cattle Dogs chase the user's cursor disguised as
-a tennis ball. 'Luna \& Arlo' pushes the boundaries of my coding knowledge and
-opens the door to game design.
 **Why does it matter?** Mindless rejuvenation. Microsoft Edge Surf and Chrome Dino
 have gained reputations as competitive games and distractions in the workplace.
 This project is designed to give the mind a calm break from the mundane and routine
 while using psychology-backed focus methods.
 **Who is it for?** Students, office workers, dog enthusiasts, and any person in
 need of a time passer or a mental break. Inspired by the Pomodoro Technique, visual
-curiosity, and fluid movement.
+curiosity, and fluid movement. 
+
+
 ### Feature Plan
-**Project 01** - *Features in the first prototype* -
+**Features in the first prototype**
 * Core structure: HTML and CSS build text, dog characters, and movement
 * Site is deployed: Site is live and published using GitHub Pages
 * Accessible by URL: Site may be accessed publicly using a URL
 * Basic functionality: Dogs follow/chase tennis ball cursor without regards to
 speed or spacing
-**Project 02** - *Features I plan to add, improve, or refine for the final MVP* -
+
+**Features I plan to add, improve, or refine for the final MVP**
 * Chasing speed: Dogs follow/chase tennis ball cursor with intentional speed and
 spacing
 * Background scene: Site background displays nature scene
@@ -84,7 +33,19 @@ dogs to follow switches until the treats disappear
 * Timer: 5-minute countdown timer inspired by the Pomodoro Technique
 * Title tag: Tab labeled with title tag for simple navigation back to the screen
 during working intervals as well as a professional appearance on the browser
-### Tools and Technologies
+
+
+## Tools and Technologies
+
+- **Tool 01** - Why I chose it
+- **Tool 02** - Why I chose it
+Include code editor(s)
+Include any frameworks or libraries
+Include hosting platform(s)
+Include any AI assistants/agents used
+For each, one sentence explaining the choice is sufficient.
+
+
 **Code Editor**: Visual Studio Code- I chose VSCode because it is familiar to me,
 and it gives me a solid foundation with room for experimentation in other areas to
 practice new skills. I chose it over Cursor because when I downloaded the editor,
@@ -130,3 +91,11 @@ Lusion, which "completely blew \[them] away". Commenters offered mixed answers,
 such as basic HTML and CSS and/or Motion, but the overwhelming majority responded
 with "Three.js". The websites piqued my curiosity and had me wondering what I could
 create with time, interest, and the right tool.
+
+
+## Live Project
+
+[View my project] (https://kierusse.github.io/Luna-and-Arlo/)
+
+
+

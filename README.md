@@ -16,6 +16,7 @@ curiosity, and fluid movement.
 
 
 ### Feature Plan
+
 **Features in the first prototype**
 * Core structure: HTML and CSS build text, dog characters, and movement
 * Site is deployed: Site is live and published using GitHub Pages
@@ -36,15 +37,6 @@ during working intervals as well as a professional appearance on the browser
 
 
 ## Tools and Technologies
-
-- **Tool 01** - Why I chose it
-- **Tool 02** - Why I chose it
-Include code editor(s)
-Include any frameworks or libraries
-Include hosting platform(s)
-Include any AI assistants/agents used
-For each, one sentence explaining the choice is sufficient.
-
 
 **Code Editor**: Visual Studio Code- I chose VSCode because it is familiar to me,
 and it gives me a solid foundation with room for experimentation in other areas to

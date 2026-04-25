@@ -54,6 +54,7 @@ html, body {
   transform: translate(-50%, -50%);
   transition: transform 0.08s ease, background 0.15s;
   z-index: 9999;
+  opacity: 0; /* FIX: hide fallback div — the .cur file is the real cursor */
 
   /* Stitching lines that make it look like a tennis ball */
   box-shadow:
@@ -113,6 +114,7 @@ header p {
 #playground {
   position: fixed;
   inset: 0;
+  pointer-events: none; /* FIX: was blocking all mouse clicks and movement */
 }
 
 /* ── Dogs ── */
@@ -225,6 +227,7 @@ footer {
   text-align: center;
   padding: 16px 0 22px;
   z-index: 100;
+  pointer-events: auto; /* FIX: ensure footer buttons receive clicks */
 }
 
 #show-timer-btn {

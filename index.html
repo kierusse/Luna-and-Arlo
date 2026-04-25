@@ -3,250 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luna & Arlo</title>
+  <title>Luna &amp; Arlo</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --cream: #fdf8f2;
-      --luna-blue: #5b8dee;
-      --arlo-brown: #c0654a;
-      --bone: #c8bfb0;
-      --text-muted: #aaa;
-      --timer-bg: #fff;
-    }
-
-    html, body {
-      width: 100%; height: 100%;
-      background: var(--cream);
-      font-family: 'Nunito', sans-serif;
-      overflow: hidden;
-      cursor: none;
-    }
-
-    /* Custom cursor */
-    #cursor {
-      position: fixed;
-      width: 20px; height: 20px;
-      border: 2.5px solid var(--arlo-brown);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform 0.08s ease, background 0.15s;
-      z-index: 9999;
-    }
-    body:active #cursor {
-      background: rgba(192,101,74,0.2);
-      transform: translate(-50%, -50%) scale(0.7);
-    }
-
-    /* Header */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      text-align: center;
-      padding: 28px 0 10px;
-      z-index: 100;
-      pointer-events: none;
-    }
-    header h1 {
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      color: #c8c0b5;
-      letter-spacing: 0.02em;
-    }
-    header p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-      letter-spacing: 0.04em;
-    }
-
-    /* Canvas / playground */
-    #playground {
-      position: fixed;
-      inset: 0;
-    }
-
-    /* Dogs */
-    .dog {
-      position: fixed;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      pointer-events: none;
-      transition: left 0.45s cubic-bezier(.22,.68,0,1.2), top 0.45s cubic-bezier(.22,.68,0,1.2);
-      will-change: left, top;
-      z-index: 50;
-    }
-    .dog-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      margin-top: 3px;
-    }
-    #luna .dog-label { color: var(--luna-blue); }
-    #arlo .dog-label { color: var(--arlo-brown); }
-
-    /* SVG dog sprites */
-    .dog svg { filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12)); }
-
-    /* Bounce animation when dog catches treat */
-    @keyframes bounce {
-      0%   { transform: translateY(0); }
-      30%  { transform: translateY(-14px) rotate(-8deg); }
-      60%  { transform: translateY(-6px) rotate(5deg); }
-      100% { transform: translateY(0) rotate(0deg); }
-    }
-    .dog.caught { animation: bounce 0.5s ease; }
-
-    /* Treats */
-    .treat {
-      position: fixed;
-      pointer-events: none;
-      z-index: 40;
-      font-size: 22px;
-      animation: drop-in 0.4s cubic-bezier(.22,.68,0,1.3) forwards;
-      will-change: transform, opacity;
-    }
-    @keyframes drop-in {
-      0%   { transform: translateY(-18px) scale(0.5) rotate(-20deg); opacity: 0; }
-      100% { transform: translateY(0)     scale(1)   rotate(0deg);   opacity: 1; }
-    }
-    /* Wobble treat sits idle */
-    .treat.idle {
-      animation: wobble 2.4s ease-in-out infinite;
-    }
-    @keyframes wobble {
-      0%, 100% { transform: rotate(-6deg) scale(1);   }
-      50%       { transform: rotate( 6deg) scale(1.08); }
-    }
-    /* Eaten pop when dog reaches it */
-    .treat.eaten {
-      animation: eat-pop 0.35s ease forwards !important;
-    }
-    @keyframes eat-pop {
-      0%   { transform: scale(1);   opacity: 1; }
-      50%  { transform: scale(1.5); opacity: 0.7; }
-      100% { transform: scale(0);   opacity: 0; }
-    }
-
-    /* Paw prints that appear on click */
-    .paw {
-      position: fixed;
-      font-size: 16px;
-      pointer-events: none;
-      animation: paw-fade 0.8s ease forwards;
-      z-index: 30;
-    }
-    @keyframes paw-fade {
-      0%   { transform: scale(0.5); opacity: 0.8; }
-      100% { transform: scale(1.3); opacity: 0; }
-    }
-
-    /* Footer */
-    footer {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      text-align: center;
-      padding: 16px 0 22px;
-      z-index: 100;
-    }
-
-    #show-timer-btn {
-      background: none;
-      border: 1.5px solid #ddd;
-      border-radius: 20px;
-      padding: 7px 22px;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      cursor: none;
-      transition: border-color 0.2s, color 0.2s;
-      margin-bottom: 10px;
-    }
-    #show-timer-btn:hover { border-color: #bbb; color: #888; }
-
-    .footer-hint {
-      font-size: 0.72rem;
-      color: #ccc;
-      letter-spacing: 0.03em;
-    }
-
-    /* Timer panel */
-    #timer-panel {
-      position: fixed;
-      bottom: 70px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: var(--timer-bg);
-      border: 1.5px solid #eee;
-      border-radius: 18px;
-      padding: 22px 32px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-      z-index: 200;
-      min-width: 240px;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    #timer-panel.visible {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateX(-50%) translateY(0);
-    }
-    #timer-panel h2 {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1rem;
-      color: #bbb;
-      margin-bottom: 10px;
-      letter-spacing: 0.05em;
-    }
-    #timer-display {
-      font-family: 'Fredoka One', cursive;
-      font-size: 2.8rem;
-      color: #555;
-      letter-spacing: 0.04em;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .timer-controls {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .timer-controls button {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      border: 1.5px solid #eee;
-      border-radius: 12px;
-      padding: 6px 14px;
-      background: none;
-      color: #aaa;
-      cursor: none;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
-    .timer-controls button:hover { background: #f9f4ef; color: #888; }
-    .timer-controls button.active { background: var(--arlo-brown); color: #fff; border-color: var(--arlo-brown); }
-
-    #treat-counter {
-      position: fixed;
-      top: 110px;
-      right: 24px;
-      font-family: 'Fredoka One', cursive;
-      font-size: 0.85rem;
-      color: #ccc;
-      letter-spacing: 0.05em;
-      z-index: 100;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+<!-- Custom cursor element (tennis ball div, hidden when .cur file loads) -->
 <div id="cursor"></div>
 
 <header>
@@ -263,9 +26,12 @@
     <ellipse cx="27" cy="34" rx="14" ry="11" fill="#5b8dee"/>
     <!-- Head -->
     <circle cx="27" cy="20" r="11" fill="#5b8dee"/>
-    <!-- Ears -->
-    <ellipse cx="18" cy="13" rx="5" ry="7" fill="#4a7de0" transform="rotate(-15 18 13)"/>
-    <ellipse cx="36" cy="13" rx="5" ry="7" fill="#4a7de0" transform="rotate(15 36 13)"/>
+    <!-- Fluffy cheeks -->
+    <ellipse cx="18" cy="23" rx="5" ry="4" fill="#7aa8f4" opacity="0.6"/>
+    <ellipse cx="36" cy="23" rx="5" ry="4" fill="#7aa8f4" opacity="0.6"/>
+    <!-- Ears - floppy -->
+    <ellipse cx="18" cy="12" rx="5" ry="8" fill="#4a7de0" transform="rotate(-15 18 12)"/>
+    <ellipse cx="36" cy="12" rx="5" ry="8" fill="#4a7de0" transform="rotate(15 36 12)"/>
     <!-- Eyes -->
     <circle cx="23" cy="19" r="2.5" fill="white"/>
     <circle cx="31" cy="19" r="2.5" fill="white"/>
@@ -274,19 +40,17 @@
     <circle cx="24.3" cy="18.9" r="0.5" fill="white"/>
     <circle cx="32.3" cy="18.9" r="0.5" fill="white"/>
     <!-- Nose -->
-    <ellipse cx="27" cy="23.5" rx="2" ry="1.2" fill="#2a5cbf"/>
+    <ellipse cx="27" cy="23.5" rx="2.2" ry="1.4" fill="#2a3a6a"/>
     <!-- Mouth -->
-    <path d="M25 25 Q27 27 29 25" stroke="#2a5cbf" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <!-- Tennis ball -->
-    <circle cx="40" cy="26" r="7" fill="#c8e63c"/>
-    <path d="M34 23 Q37 26 34 29" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <path d="M46 23 Q43 26 46 29" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M24.5 25.5 Q27 28 29.5 25.5" stroke="#2a3a6a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
     <!-- Tail -->
-    <path d="M41 34 Q50 28 48 20" stroke="#5b8dee" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M41 34 Q52 28 48 20" stroke="#5b8dee" stroke-width="5" fill="none" stroke-linecap="round"/>
     <!-- Legs -->
     <rect x="18" y="42" width="5" height="9" rx="2.5" fill="#4a7de0"/>
     <rect x="25" y="43" width="5" height="8" rx="2.5" fill="#4a7de0"/>
     <rect x="32" y="43" width="5" height="8" rx="2.5" fill="#4a7de0"/>
+    <!-- Fluff on chest -->
+    <ellipse cx="27" cy="31" rx="7" ry="5" fill="#7aa8f4" opacity="0.5"/>
   </svg>
   <span class="dog-label">Luna</span>
 </div>
@@ -343,220 +107,13 @@
     <button id="btn-pause">Pause</button>
     <button id="btn-reset">Reset</button>
   </div>
-  <div style="margin-top:12px; display:flex; gap:8px; justify-content:center;">
+  <div class="timer-modes">
     <button class="mode-btn active" data-mins="25">Focus</button>
     <button class="mode-btn" data-mins="5">Short Break</button>
     <button class="mode-btn" data-mins="15">Long Break</button>
   </div>
 </div>
 
-<script>
-  // ── Cursor ──
-  const cursor = document.getElementById('cursor');
-  let mx = window.innerWidth/2, my = window.innerHeight/2;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
-  });
-
-  // ── Dog positions ──
-  const luna = document.getElementById('luna');
-  const arlo = document.getElementById('arlo');
-
-  // Start positions
-  let lunaX = window.innerWidth  * 0.55, lunaY = window.innerHeight * 0.45;
-  let arloX = window.innerWidth  * 0.68, arloY = window.innerHeight * 0.50;
-
-  function setDogPos(el, x, y) {
-    el.style.left = (x - 27) + 'px';
-    el.style.top  = (y - 27) + 'px';
-  }
-  setDogPos(luna, lunaX, lunaY);
-  setDogPos(arlo, arloX, arloY);
-
-  // Dogs lazily follow cursor with different offsets & speeds
-  const DOG_W = 54, DOG_H = 54;
-  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
-
-  function moveDogs() {
-    const targetX = mx, targetY = my;
-
-    // Luna: follows closer, offset left
-    const lTargetX = clamp(targetX - 60,  DOG_W, window.innerWidth  - DOG_W);
-    const lTargetY = clamp(targetY - 40,  DOG_H, window.innerHeight - DOG_H - 70);
-    lunaX += (lTargetX - lunaX) * 0.07;
-    lunaY += (lTargetY - lunaY) * 0.07;
-
-    // Arlo: follows a bit further behind, offset right
-    const aTargetX = clamp(targetX + 30,  DOG_W, window.innerWidth  - DOG_W);
-    const aTargetY = clamp(targetY + 10,  DOG_H, window.innerHeight - DOG_H - 70);
-    arloX += (aTargetX - arloX) * 0.05;
-    arloY += (aTargetY - arloY) * 0.05;
-
-    setDogPos(luna, lunaX, lunaY);
-    setDogPos(arlo, arloX, arloY);
-    checkTreats();
-    requestAnimationFrame(moveDogs);
-  }
-  moveDogs();
-
-  // ── Treats ──
-  let treatCount = 0;
-  const counter  = document.getElementById('treat-counter');
-  const TREATS   = ['🦴','🦴','🦴','🐟','🥩','🧇'];
-
-  // Live list of treats on screen: { el, x, y, eaten }
-  const activeTreats = [];
-
-  function spawnTreat(x, y) {
-    const t = document.createElement('div');
-    t.className = 'treat';
-    t.textContent = TREATS[Math.floor(Math.random() * TREATS.length)];
-    // centre the emoji on the click point
-    const tx = x - 11, ty = y - 11;
-    t.style.left = tx + 'px';
-    t.style.top  = ty + 'px';
-    document.body.appendChild(t);
-
-    // After drop-in animation, switch to idle wobble
-    setTimeout(() => { if (!t.classList.contains('eaten')) t.classList.add('idle'); }, 420);
-
-    const record = { el: t, x: tx, y: ty, eaten: false };
-    activeTreats.push(record);
-
-    treatCount++;
-    counter.textContent = `🦴 ${treatCount} treat${treatCount !== 1 ? 's' : ''}`;
-  }
-
-  const CATCH_RADIUS = 38; // px — how close a dog needs to be
-
-  function eatTreat(record, dogEl) {
-    if (record.eaten) return;
-    record.eaten = true;
-
-    // Dog bounce
-    dogEl.classList.remove('caught');
-    void dogEl.offsetWidth;
-    dogEl.classList.add('caught');
-    dogEl.addEventListener('animationend', () => dogEl.classList.remove('caught'), { once: true });
-
-    // Treat pop-and-disappear
-    record.el.classList.remove('idle');
-    record.el.classList.add('eaten');
-    setTimeout(() => {
-      record.el.remove();
-      activeTreats.splice(activeTreats.indexOf(record), 1);
-    }, 380);
-  }
-
-  // Called every frame inside moveDogs loop
-  function checkTreats() {
-    for (const rec of activeTreats) {
-      if (rec.eaten) continue;
-      const tx = rec.x + 11, ty = rec.y + 11; // centre of treat
-
-      const ldx = lunaX - tx, ldy = lunaY - ty;
-      if (Math.sqrt(ldx*ldx + ldy*ldy) < CATCH_RADIUS) { eatTreat(rec, luna); continue; }
-
-      const adx = arloX - tx, ady = arloY - ty;
-      if (Math.sqrt(adx*adx + ady*ady) < CATCH_RADIUS) { eatTreat(rec, arlo); }
-    }
-  }
-
-  function spawnPaw(x, y) {
-    const p = document.createElement('div');
-    p.className = 'paw';
-    p.textContent = '🐾';
-    p.style.left = (x - 8) + 'px';
-    p.style.top  = (y - 8) + 'px';
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 900);
-  }
-
-  document.addEventListener('click', e => {
-    if (e.target.tagName === 'BUTTON') return;
-    spawnTreat(e.clientX, e.clientY);
-    spawnPaw(e.clientX + (Math.random()-0.5)*30, e.clientY + (Math.random()-0.5)*30);
-  });
-
-  // ── Timer ──
-  const panel      = document.getElementById('timer-panel');
-  const showBtn    = document.getElementById('show-timer-btn');
-  const display    = document.getElementById('timer-display');
-  const btnStart   = document.getElementById('btn-start');
-  const btnPause   = document.getElementById('btn-pause');
-  const btnReset   = document.getElementById('btn-reset');
-  const modeBtns   = document.querySelectorAll('.mode-btn');
-
-  let timerVisible = false;
-  let timerMins    = 25;
-  let totalSecs    = 25 * 60;
-  let remaining    = totalSecs;
-  let interval     = null;
-  let running      = false;
-
-  function fmt(s) {
-    const m = Math.floor(s / 60), sec = s % 60;
-    return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-  }
-  display.textContent = fmt(remaining);
-
-  showBtn.addEventListener('click', () => {
-    timerVisible = !timerVisible;
-    panel.classList.toggle('visible', timerVisible);
-    showBtn.textContent = timerVisible ? 'Hide Timer' : 'Show Timer';
-  });
-
-  btnStart.addEventListener('click', () => {
-    if (running) return;
-    running = true;
-    btnStart.classList.add('active');
-    interval = setInterval(() => {
-      remaining--;
-      display.textContent = fmt(remaining);
-      if (remaining <= 0) {
-        clearInterval(interval);
-        running = false;
-        btnStart.classList.remove('active');
-        // Celebrate!
-        for (let i = 0; i < 8; i++) {
-          setTimeout(() => {
-            spawnTreat(Math.random()*window.innerWidth, Math.random()*window.innerHeight*0.6);
-          }, i * 150);
-        }
-      }
-    }, 1000);
-  });
-
-  btnPause.addEventListener('click', () => {
-    clearInterval(interval);
-    running = false;
-    btnStart.classList.remove('active');
-  });
-
-  btnReset.addEventListener('click', () => {
-    clearInterval(interval);
-    running = false;
-    btnStart.classList.remove('active');
-    remaining = timerMins * 60;
-    display.textContent = fmt(remaining);
-  });
-
-  modeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      modeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      clearInterval(interval);
-      running = false;
-      btnStart.classList.remove('active');
-      timerMins = parseInt(btn.dataset.mins);
-      remaining = timerMins * 60;
-      display.textContent = fmt(remaining);
-    });
-  });
-
-  // All timer-control buttons get cursor:none treatment handled by CSS
-</script>
+<script src="script.js"></script>
 </body>
 </html>

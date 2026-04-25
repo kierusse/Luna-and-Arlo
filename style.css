@@ -16,10 +16,77 @@ body {
     background-size: cover;
     background-position: center;
     min-height: 100vh;
-    }
+}
 
-h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+/* ── Heading bounces in from above ── */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: drop-in 0.7s cubic-bezier(.22,.68,0,1.4) both;
+}
 
-h2 { font-size: 2rem; color: blue; margin-top: 0; }
+/* ── h2 slides in from the left ── */
+h2 {
+    font-size: 2rem;
+    color: blue;
+    margin-top: 0;
+    animation: slide-in 0.6s ease 0.3s both;
+}
 
-p  { font-size: 1.5rem; }
+/* ── Paragraphs fade up one by one ── */
+p {
+    font-size: 1.5rem;
+    animation: fade-up 0.6s ease 0.5s both;
+}
+
+/* ── h1 hover: wobble like a tennis ball ── */
+h1:hover {
+    animation: wobble 0.5s ease;
+    cursor: default;
+}
+
+/* ── h2 hover: color flash ── */
+h2:hover {
+    animation: color-flash 0.4s ease;
+    cursor: default;
+}
+
+/* ─────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────── */
+
+/* Bounce drop from top */
+@keyframes drop-in {
+    0%   { opacity: 0; transform: translateY(-60px) scale(0.8); }
+    100% { opacity: 1; transform: translateY(0)     scale(1);   }
+}
+
+/* Slide in from left */
+@keyframes slide-in {
+    0%   { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0);     }
+}
+
+/* Fade up */
+@keyframes fade-up {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0);    }
+}
+
+/* Wobble side to side */
+@keyframes wobble {
+    0%   { transform: rotate(0deg);   }
+    20%  { transform: rotate(-8deg);  }
+    40%  { transform: rotate(8deg);   }
+    60%  { transform: rotate(-5deg);  }
+    80%  { transform: rotate(5deg);   }
+    100% { transform: rotate(0deg);   }
+}
+
+/* Color flash for h2 */
+@keyframes color-flash {
+    0%   { color: blue;   }
+    33%  { color: green;  }
+    66%  { color: orange; }
+    100% { color: blue;   }
+}

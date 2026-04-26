@@ -1,49 +1,18 @@
-/* ─────────────────────────────────────
-   Luna & Arlo — style.css
-   Companion to index.html + script.js
-───────────────────────────────────── */
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --cream: #fdf8f2;
-  --luna-blue: #5b8dee;
-  --arlo-brown: #c0654a;
-  --bone: #c8bfb0;
-  --text-muted: #aaa;
-  --timer-bg: #fff;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
   width: 100%;
   height: 100%;
-  background: var(--cream);
-  font-family: 'Nunito', sans-serif;
   overflow: hidden;
-
-
-  /*
-    Tennis ball cursor: uses the uploaded .cur file as the primary cursor.
-    The 16 16 sets the hotspot to the center of the cursor image.
-    'auto' is the fallback if the .cur file fails to load.
-  */
+  font-family: 'Nunito', sans-serif;
   cursor: url('tennis-cursor.cur') 16 16, auto;
-
-  background-image: url('grass-field.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
+  background: url('grass-field.jpg') center / cover no-repeat fixed;
 }
 
-/* ── Custom cursor div (fallback visual when .cur doesn't render) ──
-   Hidden via opacity when the OS successfully loads the .cur file.
-   JS moves this element to follow the mouse at all times.           */
+button {
+  cursor: url('tennis-cursor.cur') 16 16, pointer;
+}
+
 #cursor {
   position: fixed;
   width: 22px;
@@ -53,319 +22,254 @@ html, body {
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: transform 0.08s ease, background 0.15s;
   z-index: 9999;
-  opacity: 0; /* FIX: hide fallback div — the .cur file is the real cursor */
-
-  /* Stitching lines that make it look like a tennis ball */
-  box-shadow:
-    inset 2px -2px 0 rgba(168, 192, 32, 0.6),
-    inset -2px 2px 0 rgba(168, 192, 32, 0.6);
+  opacity: 0;
 }
 
-/* Shrink + tint cursor on click */
-body:active #cursor {
-  background: rgba(192, 101, 74, 0.3);
-  transform: translate(-50%, -50%) scale(0.7);
-}
-
-/* All buttons inside the page inherit the cursor too */
-button {
-  cursor: url('tennis-cursor.cur') 16 16, pointer;
-}
-
-/* ── Header ── */
+/* HEADER — pointer-events none so clicks pass through to the field */
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   text-align: center;
-  padding: 28px 0 10px;
+  padding: 22px 0 10px;
+  z-index: 100;
+  pointer-events: none;
+}
+header h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+header p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.85);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* SOCIAL BAR — top left */
+#social-bar {
+  position: fixed;
+  top: 20px; left: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 300;
+}
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
+}
+.social-btn:hover {
+  background: rgba(255,255,255,0.85);
+  color: #333;
+}
+
+/* SHOW TIMER BUTTON — top right */
+#show-timer-btn {
+  position: fixed;
+  top: 20px; right: 20px;
+  z-index: 300;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  transition: background 0.2s, color 0.2s;
+}
+#show-timer-btn:hover {
+  background: rgba(255,255,255,0.85);
+  color: #333;
+}
+
+/* TREAT COUNTER */
+#treat-counter {
+  position: fixed;
+  top: 64px; right: 24px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.05em;
+  z-index: 100;
+  pointer-events: none;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* BOTTOM HINT */
+#bottom-hint {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.38);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
   z-index: 100;
   pointer-events: none;
 }
 
-header h1 {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  color: #c8c0b5;
-  letter-spacing: 0.02em;
-
-  /* Heading bounces in from above */
-  animation: drop-in 0.7s cubic-bezier(.22,.68,0,1.4) both;
-}
-
-header h1:hover {
-  /* Wobble like a tennis ball on hover */
-  animation: wobble 0.5s ease;
-}
-
-header p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 4px;
-  letter-spacing: 0.04em;
-
-  /* Fades up after heading */
-  animation: fade-up 0.6s ease 0.5s both;
-}
-
-/* ── Playground canvas ── */
-#playground {
-  position: fixed;
-  inset: 0;
-  pointer-events: none; /* FIX: was blocking all mouse clicks and movement */
-}
-
-/* ── Dogs ── */
+/* DOGS */
 .dog {
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
-  will-change: left, top;
   z-index: 50;
-  /* Movement is handled by JS — no CSS transition so JS lerp controls smoothness */
 }
-
 .dog-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  margin-top: 3px;
+  color: #fff;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.4);
+  margin-top: 2px;
 }
-
-#luna .dog-label { color: var(--luna-blue); }
-#arlo .dog-label { color: var(--arlo-brown); }
-
-/* Drop shadow on SVG sprites */
 .dog svg {
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.12));
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.25));
 }
 
-/* Bounce animation when a dog catches a treat */
 @keyframes bounce {
   0%   { transform: translateY(0); }
   30%  { transform: translateY(-14px) rotate(-8deg); }
   60%  { transform: translateY(-6px) rotate(5deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(0) rotate(0); }
 }
-
 .dog.caught {
   animation: bounce 0.5s ease;
 }
 
-/* ── Treats ── */
+/* TREATS */
 .treat {
   position: fixed;
+  font-size: 22px;
   pointer-events: none;
   z-index: 40;
-  font-size: 22px;
   animation: treat-drop 0.4s cubic-bezier(.22,.68,0,1.3) forwards;
-  will-change: transform, opacity;
 }
-
 @keyframes treat-drop {
   0%   { transform: translateY(-18px) scale(0.5) rotate(-20deg); opacity: 0; }
-  100% { transform: translateY(0)     scale(1)   rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(0) scale(1) rotate(0); opacity: 1; }
 }
-
-/* Idle wobble while waiting to be eaten */
 .treat.idle {
   animation: treat-wobble 2.4s ease-in-out infinite;
 }
-
 @keyframes treat-wobble {
-  0%, 100% { transform: rotate(-6deg) scale(1);    }
-  50%       { transform: rotate( 6deg) scale(1.08); }
+  0%, 100% { transform: rotate(-6deg) scale(1); }
+  50%       { transform: rotate(6deg) scale(1.08); }
 }
-
-/* Pop-and-disappear when eaten */
 .treat.eaten {
   animation: eat-pop 0.35s ease forwards !important;
 }
-
 @keyframes eat-pop {
   0%   { transform: scale(1);   opacity: 1; }
   50%  { transform: scale(1.5); opacity: 0.7; }
   100% { transform: scale(0);   opacity: 0; }
 }
 
-/* ── Paw prints on click ── */
+/* PAW PRINTS */
 .paw {
   position: fixed;
   font-size: 16px;
   pointer-events: none;
-  animation: paw-fade 0.8s ease forwards;
   z-index: 30;
+  animation: paw-fade 0.8s ease forwards;
 }
-
 @keyframes paw-fade {
   0%   { transform: scale(0.5); opacity: 0.8; }
   100% { transform: scale(1.3); opacity: 0; }
 }
 
-/* ── Treat counter ── */
-#treat-counter {
-  position: fixed;
-  top: 110px;
-  right: 24px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 0.85rem;
-  color: #ccc;
-  letter-spacing: 0.05em;
-  z-index: 100;
-}
-
-/* ── Footer ── */
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 16px 0 22px;
-  z-index: 100;
-  pointer-events: auto; /* FIX: ensure footer buttons receive clicks */
-}
-
-#show-timer-btn {
-  background: none;
-  border: 1.5px solid #ddd;
-  border-radius: 20px;
-  padding: 7px 22px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  cursor: url('tennis-cursor.cur') 16 16, pointer;
-  transition: border-color 0.2s, color 0.2s;
-  margin-bottom: 10px;
-}
-
-#show-timer-btn:hover {
-  border-color: #bbb;
-  color: #888;
-}
-
-.footer-hint {
-  font-size: 0.72rem;
-  color: #ccc;
-  letter-spacing: 0.03em;
-}
-
-/* ── Timer panel ── */
+/* TIMER PANEL */
 #timer-panel {
   position: fixed;
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: var(--timer-bg);
-  border: 1.5px solid #eee;
+  top: 68px; right: 20px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.6);
   border-radius: 18px;
-  padding: 22px 32px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 20px 26px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
   z-index: 200;
-  min-width: 240px;
+  min-width: 230px;
   text-align: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(-12px) scale(0.97);
+  transform-origin: top right;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
-
 #timer-panel.visible {
   opacity: 1;
   pointer-events: all;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0) scale(1);
 }
-
 #timer-panel h2 {
   font-family: 'Fredoka One', cursive;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #bbb;
   margin-bottom: 10px;
   letter-spacing: 0.05em;
 }
-
 #timer-display {
   font-family: 'Fredoka One', cursive;
   font-size: 2.8rem;
-  color: #555;
-  letter-spacing: 0.04em;
+  color: #444;
   line-height: 1;
   margin-bottom: 14px;
 }
-
 .timer-controls {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.timer-controls button,
-.timer-modes button {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  border: 1.5px solid #eee;
-  border-radius: 12px;
-  padding: 6px 14px;
-  background: none;
-  color: #aaa;
-  cursor: url('tennis-cursor.cur') 16 16, pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-
-.timer-controls button:hover,
-.timer-modes button:hover {
-  background: #f9f4ef;
-  color: #888;
-}
-
-.timer-controls button.active,
-.timer-modes button.active {
-  background: var(--arlo-brown);
-  color: #fff;
-  border-color: var(--arlo-brown);
-}
-
-.timer-modes {
-  margin-top: 12px;
   display: flex;
   gap: 8px;
   justify-content: center;
+  flex-wrap: wrap;
 }
-
-/* ─────────────────────────────────────
-   KEYFRAMES — page-load animations
-───────────────────────────────────── */
-
-/* Bounce drop from top */
-@keyframes drop-in {
-  0%   { opacity: 0; transform: translateY(-60px) scale(0.8); }
-  100% { opacity: 1; transform: translateY(0)     scale(1);   }
+.timer-controls button,
+.timer-modes button {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  border: 1.5px solid #eee;
+  border-radius: 12px;
+  padding: 6px 13px;
+  background: none;
+  color: #aaa;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-
-/* Slide in from left (available for future elements) */
-@keyframes slide-in {
-  0%   { opacity: 0; transform: translateX(-50px); }
-  100% { opacity: 1; transform: translateX(0);     }
+.timer-controls button:hover,
+.timer-modes button:hover {
+  background: #f5f0eb;
+  color: #777;
+  border-color: #ddd;
 }
-
-/* Fade up */
-@keyframes fade-up {
-  0%   { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0);    }
+.timer-controls button.active,
+.timer-modes button.active {
+  background: #c0654a;
+  color: #fff;
+  border-color: #c0654a;
 }
-
-/* Wobble side to side — heading hover */
-@keyframes wobble {
-  0%   { transform: rotate(0deg);  }
-  20%  { transform: rotate(-8deg); }
-  40%  { transform: rotate(8deg);  }
-  60%  { transform: rotate(-5deg); }
-  80%  { transform: rotate(5deg);  }
-  100% { transform: rotate(0deg);  }
+.timer-modes {
+  margin-top: 11px;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
 }

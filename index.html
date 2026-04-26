@@ -4,116 +4,111 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luna &amp; Arlo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- Custom cursor element (tennis ball div, hidden when .cur file loads) -->
-<div id="cursor"></div>
+  <div id="cursor"></div>
 
-<header>
-  <h1>Luna &amp; Arlo</h1>
-  <p>Click to drop treats!</p>
-</header>
-
-<div id="playground"></div>
-
-<!-- Luna dog SVG -->
-<div class="dog" id="luna">
-  <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Body -->
-    <ellipse cx="27" cy="34" rx="14" ry="11" fill="#5b8dee"/>
-    <!-- Head -->
-    <circle cx="27" cy="20" r="11" fill="#5b8dee"/>
-    <!-- Fluffy cheeks -->
-    <ellipse cx="18" cy="23" rx="5" ry="4" fill="#7aa8f4" opacity="0.6"/>
-    <ellipse cx="36" cy="23" rx="5" ry="4" fill="#7aa8f4" opacity="0.6"/>
-    <!-- Ears - floppy -->
-    <ellipse cx="18" cy="12" rx="5" ry="8" fill="#4a7de0" transform="rotate(-15 18 12)"/>
-    <ellipse cx="36" cy="12" rx="5" ry="8" fill="#4a7de0" transform="rotate(15 36 12)"/>
-    <!-- Eyes -->
-    <circle cx="23" cy="19" r="2.5" fill="white"/>
-    <circle cx="31" cy="19" r="2.5" fill="white"/>
-    <circle cx="23.8" cy="19.5" r="1.3" fill="#222"/>
-    <circle cx="31.8" cy="19.5" r="1.3" fill="#222"/>
-    <circle cx="24.3" cy="18.9" r="0.5" fill="white"/>
-    <circle cx="32.3" cy="18.9" r="0.5" fill="white"/>
-    <!-- Nose -->
-    <ellipse cx="27" cy="23.5" rx="2.2" ry="1.4" fill="#2a3a6a"/>
-    <!-- Mouth -->
-    <path d="M24.5 25.5 Q27 28 29.5 25.5" stroke="#2a3a6a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <!-- Tail -->
-    <path d="M41 34 Q52 28 48 20" stroke="#5b8dee" stroke-width="5" fill="none" stroke-linecap="round"/>
-    <!-- Legs -->
-    <rect x="18" y="42" width="5" height="9" rx="2.5" fill="#4a7de0"/>
-    <rect x="25" y="43" width="5" height="8" rx="2.5" fill="#4a7de0"/>
-    <rect x="32" y="43" width="5" height="8" rx="2.5" fill="#4a7de0"/>
-    <!-- Fluff on chest -->
-    <ellipse cx="27" cy="31" rx="7" ry="5" fill="#7aa8f4" opacity="0.5"/>
-  </svg>
-  <span class="dog-label">Luna</span>
-</div>
-
-<!-- Arlo dog SVG -->
-<div class="dog" id="arlo">
-  <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Body -->
-    <ellipse cx="27" cy="34" rx="14" ry="11" fill="#c0654a"/>
-    <!-- Head -->
-    <circle cx="27" cy="20" r="11" fill="#c0654a"/>
-    <!-- Fluffy cheeks -->
-    <ellipse cx="18" cy="23" rx="5" ry="4" fill="#d4775e" opacity="0.6"/>
-    <ellipse cx="36" cy="23" rx="5" ry="4" fill="#d4775e" opacity="0.6"/>
-    <!-- Ears - pointy -->
-    <polygon points="19,14 14,4 24,10" fill="#a84e38"/>
-    <polygon points="35,14 30,4 40,10" fill="#a84e38"/>
-    <!-- Eyes -->
-    <circle cx="23" cy="19" r="2.5" fill="white"/>
-    <circle cx="31" cy="19" r="2.5" fill="white"/>
-    <circle cx="23.8" cy="19.5" r="1.3" fill="#222"/>
-    <circle cx="31.8" cy="19.5" r="1.3" fill="#222"/>
-    <circle cx="24.3" cy="18.9" r="0.5" fill="white"/>
-    <circle cx="32.3" cy="18.9" r="0.5" fill="white"/>
-    <!-- Nose -->
-    <ellipse cx="27" cy="23.5" rx="2.2" ry="1.4" fill="#7a3020"/>
-    <!-- Mouth -->
-    <path d="M24.5 25.5 Q27 28 29.5 25.5" stroke="#7a3020" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <!-- Tail -->
-    <path d="M41 34 Q52 30 50 22" stroke="#c0654a" stroke-width="5" fill="none" stroke-linecap="round"/>
-    <!-- Legs -->
-    <rect x="18" y="42" width="5" height="9" rx="2.5" fill="#a84e38"/>
-    <rect x="25" y="43" width="5" height="8" rx="2.5" fill="#a84e38"/>
-    <rect x="32" y="43" width="5" height="8" rx="2.5" fill="#a84e38"/>
-    <!-- Fluff on chest -->
-    <ellipse cx="27" cy="31" rx="7" ry="5" fill="#d4775e" opacity="0.5"/>
-  </svg>
-  <span class="dog-label">Arlo</span>
-</div>
-
-<div id="treat-counter">🦴 0 treats</div>
-
-<footer>
-  <button id="show-timer-btn">Show Timer</button>
-  <div class="footer-hint">Move your cursor to play • Inspired by the Pomodoro Technique</div>
-</footer>
-
-<!-- Timer panel -->
-<div id="timer-panel">
-  <h2>🐾 Focus Timer</h2>
-  <div id="timer-display">25:00</div>
-  <div class="timer-controls">
-    <button id="btn-start">Start</button>
-    <button id="btn-pause">Pause</button>
-    <button id="btn-reset">Reset</button>
+  <!-- Top-left: Social icon buttons -->
+  <div id="social-bar">
+    <a href="social.html" target="_blank" class="social-btn" aria-label="Portfolio" title="Portfolio">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+    </a>
+    <a href="#" class="social-btn" aria-label="LinkedIn" title="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+    <a href="#" class="social-btn" aria-label="Email" title="Email">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+      </svg>
+    </a>
   </div>
-  <div class="timer-modes">
-    <button class="mode-btn active" data-mins="25">Focus</button>
-    <button class="mode-btn" data-mins="5">Short Break</button>
-    <button class="mode-btn" data-mins="15">Long Break</button>
-  </div>
-</div>
 
-<script src="script.js"></script>
+  <!-- Top-center: Title -->
+  <header>
+    <h1>Luna &amp; Arlo</h1>
+    <p>Click to drop treats!</p>
+  </header>
+
+  <!-- Top-right: Show Timer -->
+  <div id="top-right-controls">
+    <button id="show-timer-btn">Show Timer</button>
+  </div>
+
+  <div id="playground"></div>
+
+  <!-- Luna -->
+  <div class="dog" id="luna">
+    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="27" cy="34" rx="14" ry="11" fill="#5b8dee"/>
+      <circle cx="27" cy="20" r="11" fill="#5b8dee"/>
+      <ellipse cx="18" cy="23" rx="5" ry="4" fill="#7aa8f4" opacity="0.6"/>
+      <ellipse cx="36" cy="23" rx="5" ry="4" fill="#7aa8f4" opacity="0.6"/>
+      <ellipse cx="18" cy="12" rx="5" ry="8" fill="#4a7de0" transform="rotate(-15 18 12)"/>
+      <ellipse cx="36" cy="12" rx="5" ry="8" fill="#4a7de0" transform="rotate(15 36 12)"/>
+      <circle cx="23" cy="19" r="2.5" fill="white"/><circle cx="31" cy="19" r="2.5" fill="white"/>
+      <circle cx="23.8" cy="19.5" r="1.3" fill="#222"/><circle cx="31.8" cy="19.5" r="1.3" fill="#222"/>
+      <circle cx="24.3" cy="18.9" r="0.5" fill="white"/><circle cx="32.3" cy="18.9" r="0.5" fill="white"/>
+      <ellipse cx="27" cy="23.5" rx="2.2" ry="1.4" fill="#2a3a6a"/>
+      <path d="M24.5 25.5 Q27 28 29.5 25.5" stroke="#2a3a6a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M41 34 Q52 28 48 20" stroke="#5b8dee" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <rect x="18" y="42" width="5" height="9" rx="2.5" fill="#4a7de0"/>
+      <rect x="25" y="43" width="5" height="8" rx="2.5" fill="#4a7de0"/>
+      <rect x="32" y="43" width="5" height="8" rx="2.5" fill="#4a7de0"/>
+      <ellipse cx="27" cy="31" rx="7" ry="5" fill="#7aa8f4" opacity="0.5"/>
+    </svg>
+    <span class="dog-label">Luna</span>
+  </div>
+
+  <!-- Arlo -->
+  <div class="dog" id="arlo">
+    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="27" cy="34" rx="14" ry="11" fill="#c0654a"/>
+      <circle cx="27" cy="20" r="11" fill="#c0654a"/>
+      <ellipse cx="18" cy="23" rx="5" ry="4" fill="#d4775e" opacity="0.6"/>
+      <ellipse cx="36" cy="23" rx="5" ry="4" fill="#d4775e" opacity="0.6"/>
+      <polygon points="19,14 14,4 24,10" fill="#a84e38"/>
+      <polygon points="35,14 30,4 40,10" fill="#a84e38"/>
+      <circle cx="23" cy="19" r="2.5" fill="white"/><circle cx="31" cy="19" r="2.5" fill="white"/>
+      <circle cx="23.8" cy="19.5" r="1.3" fill="#222"/><circle cx="31.8" cy="19.5" r="1.3" fill="#222"/>
+      <circle cx="24.3" cy="18.9" r="0.5" fill="white"/><circle cx="32.3" cy="18.9" r="0.5" fill="white"/>
+      <ellipse cx="27" cy="23.5" rx="2.2" ry="1.4" fill="#7a3020"/>
+      <path d="M24.5 25.5 Q27 28 29.5 25.5" stroke="#7a3020" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M41 34 Q52 30 50 22" stroke="#c0654a" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <rect x="18" y="42" width="5" height="9" rx="2.5" fill="#a84e38"/>
+      <rect x="25" y="43" width="5" height="8" rx="2.5" fill="#a84e38"/>
+      <rect x="32" y="43" width="5" height="8" rx="2.5" fill="#a84e38"/>
+      <ellipse cx="27" cy="31" rx="7" ry="5" fill="#d4775e" opacity="0.5"/>
+    </svg>
+    <span class="dog-label">Arlo</span>
+  </div>
+
+  <div id="treat-counter">🦴 0 treats</div>
+
+  <div id="bottom-hint">Move your cursor to play • Inspired by the Pomodoro Technique</div>
+
+  <!-- Timer panel -->
+  <div id="timer-panel">
+    <h2>🐾 Focus Timer</h2>
+    <div id="timer-display">25:00</div>
+    <div class="timer-controls">
+      <button id="btn-start">Start</button>
+      <button id="btn-pause">Pause</button>
+      <button id="btn-reset">Reset</button>
+    </div>
+    <div class="timer-modes">
+      <button class="mode-btn active" data-mins="25">Focus</button>
+      <button class="mode-btn" data-mins="5">Short Break</button>
+      <button class="mode-btn" data-mins="15">Long Break</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -155,7 +155,7 @@ function spawnPaw(x, y) {
 
 // Drop a treat + paw print on every click (ignore button clicks)
 document.addEventListener('click', e => {
-  if (e.target.tagName === 'BUTTON') return;
+  if (e.target.closest('#top-right-controls, #social-bar, #timer-panel, button, a')) return;
   spawnTreat(e.clientX, e.clientY);
   spawnPaw(
     e.clientX + (Math.random() - 0.5) * 30,

@@ -153,9 +153,11 @@ function spawnPaw(x, y) {
   setTimeout(() => p.remove(), 900);
 }
 
-// Drop a treat + paw print on every click (ignore button clicks)
+// Drop a treat + paw print on every click
+// Ignore clicks that land on or inside any UI chrome element
 document.addEventListener('click', e => {
-  if (e.target.closest('#top-right-controls, #social-bar, #timer-panel, button, a')) return;
+  const uiSelectors = '#top-right-controls, #social-bar, #timer-panel, button, a';
+  if (e.target.closest(uiSelectors)) return;
   spawnTreat(e.clientX, e.clientY);
   spawnPaw(
     e.clientX + (Math.random() - 0.5) * 30,

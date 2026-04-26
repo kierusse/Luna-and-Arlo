@@ -25,19 +25,6 @@ html, body {
   font-family: 'Nunito', sans-serif;
   overflow: hidden;
 
-  .socials-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.socials {
-  display: flex;
-  gap: 30px;
-  font-size: 50px;
-  justify-content: center;
-  margin-top: 40px;
-  color: white;
 
   /*
     Tennis ball cursor: uses the uploaded .cur file as the primary cursor.

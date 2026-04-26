@@ -24,7 +24,7 @@ const arlo = document.getElementById('arlo');
 // Starting positions
 let lunaX = window.innerWidth  * 0.55;
 let lunaY = window.innerHeight * 0.45;
-let arloX = window.innerWidth  * 0.68;
+let arloX = window.innerWidth  * 0.67;
 let arloY = window.innerHeight * 0.50;
 
 const DOG_W = 54;

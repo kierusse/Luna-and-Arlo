@@ -42,6 +42,14 @@ function setDogPos(el, x, y) {
 setDogPos(luna, lunaX, lunaY);
 setDogPos(arlo, arloX, arloY);
 
+// ── Treats ──
+const TREATS      = ['🦴', '🦴', '🦴', '🐟', '🥩', '🧇'];
+const CATCH_RADIUS = 38; // px — how close a dog must be to eat a treat
+
+let treatCount   = 0;
+const counter    = document.getElementById('treat-counter');
+const activeTreats = []; // { el, x, y, eaten }
+
 // ── Dog movement loop ──
 // Both dogs use lerp (linear interpolation) for smooth chasing.
 // Luna is slightly faster and offsets to the left of the cursor.
@@ -67,14 +75,6 @@ function moveDogs() {
 }
 
 moveDogs();
-
-// ── Treats ──
-const TREATS      = ['🦴', '🦴', '🦴', '🐟', '🥩', '🧇'];
-const CATCH_RADIUS = 38; // px — how close a dog must be to eat a treat
-
-let treatCount   = 0;
-const counter    = document.getElementById('treat-counter');
-const activeTreats = []; // { el, x, y, eaten }
 
 function spawnTreat(x, y) {
   const el = document.createElement('div');

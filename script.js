@@ -44,14 +44,14 @@ const activeTreats = [];
 
 function moveDogs() {
 
-  const lTargetX = clamp(mx - 60, DOG_W, window.innerWidth  - DOG_W);
-  const lTargetY = clamp(my - 40, DOG_H, window.innerHeight - DOG_H - 70);
+  const lTargetX = clamp(mx - 90, DOG_W, window.innerWidth  - DOG_W);
+  const lTargetY = clamp(my - 70, DOG_H, window.innerHeight - DOG_H - 70);
   lunaX += (lTargetX - lunaX) * 0.07;
   lunaY += (lTargetY - lunaY) * 0.07;
 
 
-  const aTargetX = clamp(mx + 30, DOG_W, window.innerWidth  - DOG_W);
-  const aTargetY = clamp(my + 10, DOG_H, window.innerHeight - DOG_H - 70);
+  const aTargetX = clamp(mx + 60, DOG_W, window.innerWidth  - DOG_W);
+  const aTargetY = clamp(my + 40, DOG_H, window.innerHeight - DOG_H - 70);
   arloX += (aTargetX - arloX) * 0.05;
   arloY += (aTargetY - arloY) * 0.05;
 

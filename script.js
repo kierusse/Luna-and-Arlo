@@ -43,7 +43,7 @@ setDogPos(luna, lunaX, lunaY);
 setDogPos(arlo, arloX, arloY);
 
 // ── Treats ──
-const TREATS      = ['🦴', '🦴', '🦴', '🐟', '🥩', '🧇'];
+const TREATS      = ['🦴', '🦴', '🦴', '🐟', '🥩', '🎾'];
 const CATCH_RADIUS = 35; // px — how close a dog must be to eat a treat
 
 let treatCount   = 0;

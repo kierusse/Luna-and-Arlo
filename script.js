@@ -1,11 +1,4 @@
-/* ─────────────────────────────────────
-   Luna & Arlo — script.js
-   Companion to index.html + style.css
-───────────────────────────────────── */
 
-// ── Custom cursor div (visual fallback / tennis-ball div) ──
-// The CSS applies the .cur file as the OS cursor.
-// This div is a secondary fallback and visual feedback element.
 const cursor = document.getElementById('cursor');
 let mx = window.innerWidth / 2;
 let my = window.innerHeight / 2;
@@ -17,11 +10,10 @@ document.addEventListener('mousemove', e => {
   cursor.style.top  = my + 'px';
 });
 
-// ── Dog elements ──
+
 const luna = document.getElementById('luna');
 const arlo = document.getElementById('arlo');
 
-// Starting positions
 let lunaX = window.innerWidth  * 0.55;
 let lunaY = window.innerHeight * 0.45;
 let arloX = window.innerWidth  * 0.67;
@@ -42,26 +34,22 @@ function setDogPos(el, x, y) {
 setDogPos(luna, lunaX, lunaY);
 setDogPos(arlo, arloX, arloY);
 
-// ── Treats ──
-const TREATS      = ['🦴', '🦴', '🦴', '🐟', '🥩', '🍗'];
-const CATCH_RADIUS = 35; // px — how close a dog must be to eat a treat
 
+const TREATS      = ['🦴', '🦴', '🦴', '🐟', '🥩', '🍗'];
+const CATCH_RADIUS = 39;
 let treatCount   = 0;
 const counter    = document.getElementById('treat-counter');
-const activeTreats = []; // { el, x, y, eaten }
+const activeTreats = []; 
 
-// ── Dog movement loop ──
-// Both dogs use lerp (linear interpolation) for smooth chasing.
-// Luna is slightly faster and offsets to the left of the cursor.
-// Arlo is a little slower and lags slightly behind to the right.
+
 function moveDogs() {
-  // Luna: eager, offset left-and-above cursor
+
   const lTargetX = clamp(mx - 60, DOG_W, window.innerWidth  - DOG_W);
   const lTargetY = clamp(my - 40, DOG_H, window.innerHeight - DOG_H - 70);
   lunaX += (lTargetX - lunaX) * 0.07;
   lunaY += (lTargetY - lunaY) * 0.07;
 
-  // Arlo: lazier, offset right-and-below cursor
+
   const aTargetX = clamp(mx + 30, DOG_W, window.innerWidth  - DOG_W);
   const aTargetY = clamp(my + 10, DOG_H, window.innerHeight - DOG_H - 70);
   arloX += (aTargetX - arloX) * 0.05;
@@ -81,14 +69,14 @@ function spawnTreat(x, y) {
   el.className   = 'treat';
   el.textContent = TREATS[Math.floor(Math.random() * TREATS.length)];
 
-  // Centre the emoji on the click point
+
   const tx = x - 11;
   const ty = y - 11;
   el.style.left = tx + 'px';
   el.style.top  = ty + 'px';
   document.body.appendChild(el);
 
-  // Switch to idle wobble after the drop-in animation finishes
+
   setTimeout(() => {
     if (!el.classList.contains('eaten')) el.classList.add('idle');
   }, 420);
@@ -104,13 +92,13 @@ function eatTreat(record, dogEl) {
   if (record.eaten) return;
   record.eaten = true;
 
-  // Trigger dog bounce
+
   dogEl.classList.remove('caught');
-  void dogEl.offsetWidth; // reflow to restart animation
+  void dogEl.offsetWidth;
   dogEl.classList.add('caught');
   dogEl.addEventListener('animationend', () => dogEl.classList.remove('caught'), { once: true });
 
-  // Treat pop-and-disappear
+
   record.el.classList.remove('idle');
   record.el.classList.add('eaten');
   setTimeout(() => {
@@ -119,12 +107,12 @@ function eatTreat(record, dogEl) {
   }, 380);
 }
 
-// Called every animation frame from moveDogs()
+
 function checkTreats() {
   for (const rec of activeTreats) {
     if (rec.eaten) continue;
 
-    const tx = rec.x + 11; // centre of treat emoji
+    const tx = rec.x + 11;
     const ty = rec.y + 11;
 
     const ldx = lunaX - tx;
@@ -153,8 +141,7 @@ function spawnPaw(x, y) {
   setTimeout(() => p.remove(), 900);
 }
 
-// Drop a treat + paw print on every click
-// Ignore clicks that land on or inside any UI chrome element
+
 document.addEventListener('click', e => {
   const uiSelectors = '#top-right-controls, #social-bar, #timer-panel, button, a';
   if (e.target.closest(uiSelectors)) return;
@@ -165,7 +152,7 @@ document.addEventListener('click', e => {
   );
 });
 
-// ── Pomodoro Timer ──
+
 const panel    = document.getElementById('timer-panel');
 const showBtn  = document.getElementById('show-timer-btn');
 const display  = document.getElementById('timer-display');
@@ -188,14 +175,14 @@ function fmt(s) {
 
 display.textContent = fmt(remaining);
 
-// Toggle timer panel visibility
+
 showBtn.addEventListener('click', () => {
   timerVisible = !timerVisible;
   panel.classList.toggle('visible', timerVisible);
   showBtn.textContent = timerVisible ? 'Hide Timer' : 'Show Timer';
 });
 
-// Start countdown
+
 btnStart.addEventListener('click', () => {
   if (running) return;
   running = true;
@@ -210,7 +197,7 @@ btnStart.addEventListener('click', () => {
       running = false;
       btnStart.classList.remove('active');
 
-      // Celebrate with a rain of treats!
+      
       for (let i = 0; i < 8; i++) {
         setTimeout(() => {
           spawnTreat(
@@ -223,14 +210,14 @@ btnStart.addEventListener('click', () => {
   }, 1000);
 });
 
-// Pause
+
 btnPause.addEventListener('click', () => {
   clearInterval(interval);
   running = false;
   btnStart.classList.remove('active');
 });
 
-// Reset to current mode's duration
+
 btnReset.addEventListener('click', () => {
   clearInterval(interval);
   running = false;
@@ -239,7 +226,7 @@ btnReset.addEventListener('click', () => {
   display.textContent = fmt(remaining);
 });
 
-// Switch timer modes (Focus / Short Break / Long Break)
+
 modeBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     modeBtns.forEach(b => b.classList.remove('active'));

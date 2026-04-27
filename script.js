@@ -50,8 +50,8 @@ function moveDogs() {
   lunaY += (lTargetY - lunaY) * 0.07;
 
 
-  const aTargetX = clamp(mx + 35, DOG_W, window.innerWidth  - DOG_W);
-  const aTargetY = clamp(my + 20, DOG_H, window.innerHeight - DOG_H - 70);
+  const aTargetX = clamp(mx - 40, DOG_W, window.innerWidth  - DOG_W);
+  const aTargetY = clamp(my - 25, DOG_H, window.innerHeight - DOG_H - 70);
   arloX += (aTargetX - arloX) * 0.05;
   arloY += (aTargetY - arloY) * 0.05;
 

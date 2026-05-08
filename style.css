@@ -5,12 +5,12 @@ html, body {
   height: 100%;
   overflow: hidden;
   font-family: 'Nunito', sans-serif;
-  cursor: url('pixel-tennis.cur') 16 16, auto;
+  cursor: url(tennis-ball-small.png) 16 16, auto;
   background: url('salokhiddin-fasikh-grass-unsplash.jpg') center / cover no-repeat fixed;
 }
 
 button {
-  cursor: url('pixel-tennis.cur') 16 16, pointer;
+  cursor: url('tennis-ball-small.png') 16 16, pointer;
 }
 
 #cursor {

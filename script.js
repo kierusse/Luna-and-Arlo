@@ -35,7 +35,7 @@ setDogPos(luna, lunaX, lunaY);
 setDogPos(arlo, arloX, arloY);
 
 
-const TREATS      = ['🦴', '🦴', '🦴', '🐟', '🥩', '🍗'];
+const TREATS      = ['🦴', '🦴', '🦴', '🫐', '🥩', '🍗'];
 const CATCH_RADIUS = 39;
 let treatCount   = 0;
 const counter    = document.getElementById('treat-counter');

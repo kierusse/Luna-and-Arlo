@@ -80,26 +80,23 @@ View my project: (https://kierusse.github.io/Luna-and-Arlo/)
 
 ## Changes from Project 01 to Project 02
 
-### Feature Plan
+No major changes were planned from Project 01. The project is built on plain HTML, CSS, and JavaScript as proposed, which is the right fit for a beginner interactive toy. However, I leaned into my prototype, backed by Claude, to support code writing, as the project was beyond my skill level for the timeframe allowed. I cut the use of Three.js because the time necessary for building visuals with it was not feasible for this project. Rather, I focused on refining responsiveness, boundaries, and visual appeal with a high-quality background image.
 
-**Features in the first prototype**
-* Core structure: HTML and CSS build text, dog characters, and movement
-* Site is deployed: Site is live and published using GitHub Pages
-* Accessible by URL: Site may be accessed publicly using a URL
-* Basic functionality: Dogs follow/chase tennis ball cursor without regards to
-speed or spacing
+* I originally planned to use Three.js library for animations. While I planned to
+experiment with their JavaScript library and seeing how far it could take me in a
+few short weeks, I ultimately decided this was outside of my scope within a single semester. 
+I stuck with HTML, CSS, and JavaScript using the help of my FigmaMake prototype, backed by Claude, as a baseline, 
+but would still like to explore the world of animation and building using other tools in the future.
 
-**Features I plan to add, improve, or refine for the final MVP**
+Below are the targeted refinements since Project 01:
 * Chasing speed: Dogs follow/chase tennis ball cursor with intentional speed and
 spacing
+* Replaced background photo with higher quality image
+* Optimized experience on mobile
+* Allowed dogs to eat treats at perimeter of screen
 * Background scene: Site background displays nature scene
 * Links to socials: Buttons that link to my professional social media pages
 * Cursor interaction: When the user clicks, treats drop, then the point for the
 dogs to follow switches until the treats disappear
 * Timer: 5-minute countdown timer inspired by the Pomodoro Technique
-* Title tag: Tab labeled with title tag for simple navigation back to the screen
-during working intervals as well as a professional appearance on the browser
 
-
-### Iteration Plan
-I planned to implem

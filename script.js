@@ -51,7 +51,7 @@ function moveDogs() {
 
 
   const aTargetX = clamp(mx - 40, 0, window.innerWidth);
-  const aTargetY = clamp(my - 55, 0, window.innerHeight - 70);
+  const aTargetY = clamp(my + 55, 0, window.innerHeight - 70);
   arloX += (aTargetX - arloX) * 0.05;
   arloY += (aTargetY - arloY) * 0.05;
 

@@ -44,7 +44,7 @@ const activeTreats = [];
 
 function moveDogs() {
 
-  const lTargetX = clamp(mx + 90, 0, window.innerWidth);
+  const lTargetX = clamp(mx + 95, 0, window.innerWidth);
   const lTargetY = clamp(my + 75, 0, window.innerHeight - 70);
   lunaX += (lTargetX - lunaX) * 0.07;
   lunaY += (lTargetY - lunaY) * 0.07;

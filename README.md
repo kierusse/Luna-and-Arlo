@@ -1,10 +1,12 @@
 # Luna & Arlo
 
+## What is this project? 
+
 'Luna &amp; Arlo', named after my dogs, is an interactive art toy where two physics-based Australian Cattle Dogs chase the user's cursor which is disguised as a tennis ball.
 'Luna \& Arlo' pushes the boundaries of my coding knowledge and
 opens the door to game design.
 
-## Purpose
+## Why did I create Luna and Arlo?
 
 Mindless rejuvenation. Microsoft Edge Surf and Chrome Dino
 have gained reputations as competitive games and distractions in the workplace.
@@ -15,28 +17,7 @@ need of a time passer or a mental break. Inspired by the Pomodoro Technique, vis
 curiosity, and fluid movement. 
 
 
-### Feature Plan
-
-**Features in the first prototype**
-* Core structure: HTML and CSS build text, dog characters, and movement
-* Site is deployed: Site is live and published using GitHub Pages
-* Accessible by URL: Site may be accessed publicly using a URL
-* Basic functionality: Dogs follow/chase tennis ball cursor without regards to
-speed or spacing
-
-**Features I plan to add, improve, or refine for the final MVP**
-* Chasing speed: Dogs follow/chase tennis ball cursor with intentional speed and
-spacing
-* Background scene: Site background displays nature scene
-* Links to socials: Buttons that link to my professional social media pages
-* Cursor interaction: When the user clicks, treats drop, then the point for the
-dogs to follow switches until the treats disappear
-* Timer: 5-minute countdown timer inspired by the Pomodoro Technique
-* Title tag: Tab labeled with title tag for simple navigation back to the screen
-during working intervals as well as a professional appearance on the browser
-
-
-## Tools and Technologies
+## What tools did I use?
 
 **Code Editor**: Visual Studio Code- I chose VSCode because it is familiar to me,
 and it gives me a solid foundation with room for experimentation in other areas to
@@ -55,7 +36,8 @@ execute ideas.
 high-fidelity prototype. This project will be my first time using AI to carry out a
 visual idea versus simple text and schedules or itineraries. I am using Figma Make
 instead of its alternative, Loveable, because I am already familiar with the
-platform and my work will be based out of the same host site.
+platform and my work will be based out of the same host site. HTML, CSS, and JavaScript
+were used to formulate and adjust project features and design.
 
 **Browser**: Google Chrome- I will be using Google Chrome to access my online
 repository and design tools because it has successfully carried out all of my
@@ -73,12 +55,12 @@ and can focus on branching out elsewhere in my project. SourceTree and Tower wou
 be alternatives that are also supported on Windows, which I currently use, though I
 do not plan on experimenting in this area. I have VSCode to support changes.
 
-**Animations**: Three.js - According to Stack Overflow, "Three.js allows the
+**Animations**: I originally planned to use Three.js - According to Stack Overflow, "Three.js allows the
 creation of GPU-accelerated 3D animations using the JavaScript language as part of
-a website without relying on proprietary browser plugins." I look forward to
-experimenting with this JavaScript library and seeing how far it can take me in a
-few short weeks, then over longer periods of time as I become more comfortable with
-the tool. I considered using GSAP for JavaScript animation, but the advertised
+a website without relying on proprietary browser plugins." While I planned to
+experiment with their JavaScript library and seeing how far it could take me in a
+few short weeks, I ultimately decided this was outside of my scope within a single semester. 
+I considered using GSAP for JavaScript animation, but the advertised
 features align more with what I would use in my first personal portfolio. Ananya
 Hegde of Medium calls Three.js "The Library That Made Me Fall in Love With the Web
 Again." A reddit user by the name Alexole1 asked, "What tools are necessary to
@@ -86,13 +68,35 @@ build dynamic and animated websites?" I asked a similar question on Google, whic
 led me to the post. Alexole1 mentioned discovering sites such as Igloo.inc and
 Lusion, which "completely blew \[them] away". Commenters offered mixed answers,
 such as basic HTML and CSS and/or Motion, but the overwhelming majority responded
-with "Three.js". The websites piqued my curiosity and had me wondering what I could
-create with time, interest, and the right tool.
+with "Three.js". I stuck with HTML, CSS, and JavaScript using the help of my
+FigmaMake prototype as a baseline, but would still like to explore the world of animation
+with other tools in the future.
 
 
-## Live Project
+## How to access Luna and Arlo
 
 View my project: (https://kierusse.github.io/Luna-and-Arlo/)
 
 
+## Changes from Project 01 to Project 02
+
+No major changes were planned from Project 01. The project is built on plain HTML, CSS, and JavaScript as proposed, which is the right fit for a beginner interactive toy. However, I leaned into my prototype, backed by Claude, to support code writing, as the project was beyond my skill level for the timeframe allowed. I cut the use of Three.js because the time necessary for building visuals with it was not feasible for this project. Rather, I focused on refining responsiveness, boundaries, and visual appeal with a high-quality background image.
+
+* I originally planned to use Three.js library for animations. While I intended to
+experiment with their JavaScript library and see how far it could take me in a
+few short weeks, I ultimately decided this was outside of my scope within a single semester. 
+I stuck with HTML, CSS, and JavaScript using the help of my FigmaMake prototype, backed by Claude, as a baseline, 
+but would still like to explore the world of animation and building using other tools in the future.
+
+Below are the targeted refinements since Project 01:
+* Chasing speed: Dogs follow/chase tennis ball cursor with intentional speed and
+spacing
+* Replaced background photo with higher quality image
+* Optimized experience on mobile
+* Allowed dogs to eat treats at perimeter of screen
+* Background scene: Site background displays nature scene
+* Links to socials: Buttons that link to my professional social media pages
+* Cursor interaction: When the user clicks, treats drop, then the point for the
+dogs to follow switches until the treats disappear
+* Timer: 5-minute countdown timer inspired by the Pomodoro Technique
 

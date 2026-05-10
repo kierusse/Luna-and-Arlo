@@ -82,7 +82,7 @@ View my project: (https://kierusse.github.io/Luna-and-Arlo/)
 
 No major changes were planned from Project 01. The project is built on plain HTML, CSS, and JavaScript as proposed, which is the right fit for a beginner interactive toy. However, I leaned into my prototype, backed by Claude, to support code writing, as the project was beyond my skill level for the timeframe allowed. I cut the use of Three.js because the time necessary for building visuals with it was not feasible for this project. Rather, I focused on refining responsiveness, boundaries, and visual appeal with a high-quality background image.
 
-* I originally planned to use Three.js library for animations. While I planned to
+* I originally planned to use Three.js library for animations. While I intended to
 experiment with their JavaScript library and seeing how far it could take me in a
 few short weeks, I ultimately decided this was outside of my scope within a single semester. 
 I stuck with HTML, CSS, and JavaScript using the help of my FigmaMake prototype, backed by Claude, as a baseline, 

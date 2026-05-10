@@ -15,8 +15,8 @@ button {
 
 #cursor {
   position: fixed;
-  width: 22px;
-  height: 22px;
+  width: 10px;
+  height: 10px;
   background: #c8e640;
   border: 2.5px solid #a8c020;
   border-radius: 50%;
